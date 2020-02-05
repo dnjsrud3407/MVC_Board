@@ -15,3 +15,13 @@ CREATE TABLE board (
 SELECT * FROM board;
 
 DELETE FROM board;
+
+
+CREATE TABLE member (
+	name VARCHAR(10) NOT NULL,
+	id VARCHAR(12) PRIMARY KEY,
+	pass VARCHAR(16) NOT NULL,
+	email VARCHAR(50) UNIQUE NOT NULL
+);
+
+DESC member;
