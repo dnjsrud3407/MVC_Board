@@ -26,10 +26,10 @@ public class MemberFrontController extends HttpServlet{
 		ActionForward forward = null;
 		
 		// 서블릿 주소에 따라 각각 다른 작업을 수행
-		if(command.equalsIgnoreCase("/LoginForm.me")) {
+		if(command.equals("/LoginForm.me")) {
 			forward = new ActionForward();
 			forward.setPath("./member/loginForm.jsp");
-		} else if(command.equalsIgnoreCase("/LoginPro.me")) {
+		} else if(command.equals("/LoginPro.me")) {
 			action = new LoginProAction();
 			try {
 				forward = action.execute(request, response);

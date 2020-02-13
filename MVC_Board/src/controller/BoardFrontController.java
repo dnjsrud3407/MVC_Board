@@ -55,7 +55,7 @@ public class BoardFrontController extends HttpServlet {
 		//=================================================================================
 		
 		// 서블릿 주소에 따라 각각 다른 작업을 수행
-		if(command.equalsIgnoreCase("/BoardWriteForm.bo")) {
+		if(command.equals("/BoardWriteForm.bo")) {
 //			System.out.println("qna_board_write.jsp 페이지로 이동");
 //			response.sendRedirect("./board/qna_board_write.jsp");	// 현재 폴더 : WebContent	/ 	./ : 현재 폴더의 최상위  
 			// ----------- 위 방법은 코드가 길어지기 때문에 사용안함 ------------
@@ -64,7 +64,7 @@ public class BoardFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("./board/qna_board_write.jsp");
 //			forward.setRedirect(false);	= 기본값
-		} else if(command.equalsIgnoreCase("/BoardWritePro.bo")) {
+		} else if(command.equals("/BoardWritePro.bo")) {
 			// 글등록하는 DB작업이 필요하기 때문에 BoardWriteProAction 객체 생성
 			// 객체 내에서 포워딩 방식 설정
 			action = new BoardWriteProAction();
@@ -73,14 +73,14 @@ public class BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equalsIgnoreCase("/BoardList.bo")) {
+		} else if(command.equals("/BoardList.bo")) {
 			action = new BoardListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equalsIgnoreCase("/BoardDetail.bo")) {
+		} else if(command.equals("/BoardDetail.bo")) {
 //			System.out.println("BoardDetail.bo!!");
 			action = new BoardDetailAction();
 			try {
@@ -88,11 +88,11 @@ public class BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equalsIgnoreCase("/BoardFileDown.bo")) {
+		} else if(command.equals("/BoardFileDown.bo")) {
 			forward = new ActionForward();
 			// file_down.jsp 다운로드 창 열기 - 저절로 창 닫혀짐
 			forward.setPath("./board/file_down.jsp");
-		} else if(command.equalsIgnoreCase("/BoardModifyForm.bo")) {
+		} else if(command.equals("/BoardModifyForm.bo")) {
 			// --- 수정하기 폼
 			// DB 작업을 통해 원본 게시물을 가져와야함
 			action = new BoardModifyFormAction();
@@ -101,7 +101,7 @@ public class BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equalsIgnoreCase("/BoardModifyPro.bo")) {
+		} else if(command.equals("/BoardModifyPro.bo")) {
 			// --- 수정하기 작업
 //			System.out.println("BoardModifyPro.bo");
 			// 수정하기는 DB작업이 필요하기 때문에 BoardModifyProAction 클래스가 필요하다
@@ -111,12 +111,12 @@ public class BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equalsIgnoreCase("/BoardDeleteForm.bo")) {
+		} else if(command.equals("/BoardDeleteForm.bo")) {
 			// --- 삭제하기 폼
 			// password 값만 입력받으면 되기 때문에 Action클래스 필요 X
 			forward = new ActionForward();
 			forward.setPath("./board/qna_board_delete.jsp");
-		} else if(command.equalsIgnoreCase("/BoardDeletePro.bo")) {
+		} else if(command.equals("/BoardDeletePro.bo")) {
 			// ---  삭제하기 작업
 			action = new BoardDeleteProAction();
 			try {
@@ -124,7 +124,7 @@ public class BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equalsIgnoreCase("/BoardReplyForm.bo")) {
+		} else if(command.equals("/BoardReplyForm.bo")) {
 			// --- 답변글 폼
 			// 원본 글을 들고와야하기 때문에 BoardReplyFormAction에서 DetailService가 필요하다!
 			// 글쓰는 jsp 페이지로 이동(dispatch 방식)
@@ -136,7 +136,7 @@ public class BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equalsIgnoreCase("/BoardReplyPro.bo")) {
+		} else if(command.equals("/BoardReplyPro.bo")) {
 			// --- 답변글 등록 작업
 			action = new BoardReplyProAction();
 			try {
